@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import { QuestionDefault, Result, Survey } from "../data/data.js";
+import { QuestionDefault, Result, Survey, UserSurvey1, UserSurvey2 } from "../data/data.js";
 import {
   compare_example_return_obj,
   dashboard_example_return_obj,
@@ -10,40 +10,52 @@ export class SurveyController {
   init() {}
 
   getUserSurveyByUUID(c: any) {
-    const surveyWithUUID = Survey.map((item) => ({
+    
+    const generateQuestionsWithUUID = () => {
+    return UserSurvey1.map((item) => ({
       ...item,
       uuid: uuidv4(),
     }));
+  };
+
+   const generateQuestionsWithUUID2 = () => {
+    return UserSurvey2.map((item) => ({
+      ...item,
+      uuid: uuidv4(),
+    }));
+  };
 
     const id = c.req.param("id");
 
     const Sections = [
       {
-        uuid: "21dac039",
+        id: "21dac039",
         title: "Section 1",
-        questions: surveyWithUUID,
+        questions: generateQuestionsWithUUID(),
       },
       {
-        uuid: "40ad03ca",
+        id: "40ad03ca",
         title: "Section 2",
-        questions: surveyWithUUID,
+        questions: generateQuestionsWithUUID2(),
       },
-      {
-        uuid: "0394adaa",
-        title: "Section 3",
-        questions: surveyWithUUID,
-      },
-      {
-        uuid: "239adccc",
-        title: "Section 4",
-        questions: surveyWithUUID,
-      },
+      // {
+      //   id: "0394adaa",
+      //   title: "Section 3",
+      //   questions: generateQuestionsWithUUID(),
+      // },
+      // {
+      //   id: "239adccc",
+      //   title: "Section 4",
+      //   questions: generateQuestionsWithUUID(),
+      // },
     ];
 
-    const findSection = Sections.find((data) => data.uuid === id);
-
     return c.json({
-      data: findSection,
+      data: {
+        record: {
+          items: Sections,
+        },
+      },
     });
   }
 
@@ -79,7 +91,7 @@ export class SurveyController {
   async getPromptBySurveyId(c: any) {
     const surveyId = c.req.param("surveyId");
 
-    const promptStatus = survey_prompt.find((d) => d.id === surveyId);
+    const promptStatus = survey_prompt.find((d) => d.id == surveyId);
 
     return c.json({
       data: promptStatus,
@@ -87,11 +99,53 @@ export class SurveyController {
   }
 
   async getUserProfile(c: any) {
-    const userProfileId = c.req.param('id')
+    const userProfileId = c.req.param("id");
 
     return c.json({
       data: QuestionDefault,
       user_id: userProfileId,
-    })
+    });
+  }
+
+  async getSurveyPrompt(c: any) {
+    const userProfileId = c.req.param("surveyId");
+
+    const findSurveyStatus = Survey.extra.survey.find(
+      (data) => data.id === userProfileId
+    );
+
+    return c.json({
+      data: {
+        extra: {
+          usersurvey: {
+            id: findSurveyStatus?.id,
+            recordstate: findSurveyStatus?.recordstate,
+          },
+        },
+      },
+    });
+  }
+
+  async getSurveyList(c: any) {
+    return c.json({
+      data: {
+        extra: {
+          usersurvey: [
+            {
+              title: "survey 1",
+              id: 11,
+            },
+            {
+              title: "survey 2",
+              id: 12,
+            },
+            {
+              title: "survey 3",
+              id: 13,
+            },
+          ],
+        },
+      },
+    });
   }
 }

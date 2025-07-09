@@ -1,4 +1,4 @@
-export const Survey = [
+export const UserSurvey1 = [
   {
     id: 1,
     ishiddenbydefault: false,
@@ -20,7 +20,7 @@ export const Survey = [
         questionoption: 'b',
         targetquestion: 3
       },
-    ]
+    ],
   },
   {
     id: 2,
@@ -98,6 +98,133 @@ export const Survey = [
     questionoption_events: null
   },
 ];
+
+export const UserSurvey2 = [
+  {
+    id: 7,
+    ishiddenbydefault: false,
+    uuid: 'cmds3',
+    label: "General Public Awareness",
+    question: "How familiar is the public with the environmental benefits of recycling in your region?",
+    answer: {
+      a: "Very familiar; it's part of everyday life",
+      b: "Somewhat familiar; basic understanding exists",
+      c: "Not very familiar; limited awareness",
+      d: "Completely unfamiliar"
+    },
+    questionoption_events: [
+      {
+        questionoption: 'a',
+        targetquestion: 8
+      },
+      {
+        questionoption: 'b',
+        targetquestion: 9
+      },
+    ],
+  },
+  {
+    id: 8,
+    ishiddenbydefault: true,
+    uuid: 'vfj3d',
+    label: "Test 1",
+    question: "How often do local schools incorporate sustainability topics into their curriculum?",
+    answer: {
+      a: "Very frequently; it's a key focus",
+      b: "Occasionally mentioned",
+      c: "Rarely included",
+      d: "Never discussed"
+    },
+    questionoption_events: null,
+  },
+  {
+    id: 9,
+    ishiddenbydefault: true,
+    uuid: 'pawd3',
+    label: "Test 2",
+    question: "Are there any incentives provided for households to reduce single-use plastics?",
+    answer: {
+      a: "Yes, widely adopted programs exist",
+      b: "Some local initiatives exist",
+      c: "Limited incentives available",
+      d: "No incentives at all"
+    },
+    questionoption_events: null,
+  },
+  {
+    id: 10,
+    ishiddenbydefault: false,
+    uuid: 'lplw3',
+    label: "Test 3",
+    question: "How actively are local businesses involved in promoting a circular economy?",
+    answer: {
+      a: "Highly active with visible initiatives",
+      b: "Moderately involved in community projects",
+      c: "Minimally engaged",
+      d: "Not involved at all"
+    },
+    questionoption_events: [
+      {
+        questionoption: 'c',
+        targetquestion: 11
+      },
+    ]
+  },
+  {
+    id: 11,
+    ishiddenbydefault: true,
+    uuid: 'adwa2',
+    label: "Test 4",
+    question: "What is the general attitude of the public toward buying second-hand or refurbished products?",
+    answer: {
+      a: "Very positive; commonly practiced",
+      b: "Acceptable in some cases",
+      c: "Generally hesitant",
+      d: "Not accepted at all"
+    },
+    questionoption_events: null
+  },
+  {
+    id: 12,
+    ishiddenbydefault: false,
+    uuid: 'qwe12',
+    label: "Test 1",
+    question: "How accessible are recycling facilities in your area?",
+    answer: {
+      a: "Easily accessible for everyone",
+      b: "Some areas are covered",
+      c: "Only available in urban areas",
+      d: "Not available"
+    },
+    questionoption_events: null
+  },
+];
+
+export const Survey = 
+  {
+    extra: {
+      survey: [
+        {
+          id: '123',
+          title: 'Survey 1',
+          recordstate: 'NOT_STARTED'
+        },
+
+        {
+          id: '456',
+          title: 'Survey 2',
+          recordstate: 'PROGRESS'
+        },
+
+        {
+          id: '789',
+          title: 'Survey 3',
+          recordstate: 'FINISHED'
+        },
+      ]
+    }
+  }
+
 
 
 export const Result = [

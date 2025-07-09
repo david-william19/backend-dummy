@@ -157,15 +157,15 @@ export let compare_example_return_obj = {
 
 export let survey_prompt = [
   {
-    id: "survey-1",
+    id: 11,
     status: "PROGRESS",
   },
   {
-    id: "survey-2",
+    id: 12,
     status: "NOT_STARTED",
   },
   {
-    id: "survey-3",
+    id: 13,
     status: "FINISHED",
   },
 ];
